@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FinSmart Lab — Student Finance Lab</title>
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+</head>
+<body>
+  <!-- Particles background -->
+  <div id="particles-js"></div>
+
+  <!-- Header / Navbar -->
+  <header class="nav">
+    <div class="brand">
+      <h1>FinSmart <span>Lab</span></h1>
+      <p class="tag">Apna finance experiment</p>
+    </div>
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#tracker">Tracker</a>
+      <a href="#sip">SIP</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#about">About</a>
+      <a href="/login.html">LogOut</a>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <!-- Hero / Lab Wall -->
+    <section id="home" class="hero" data-aos="zoom-in">
+      <div class="hero-card">
+        <h2>Welcome to FinSmart Lab</h2>
+        <p>Track expenses, set budgets, plan pocket-money day-wise, and simulate SIP growth — in a neon lab UI.</p>
+        <div class="hero-cta">
+          <a href="#tracker" class="btn">Start Tracking</a>
+          <a href="#sip" class="btn ghost">Try SIP</a>
+        </div>
+
+        <!-- Lab Wall: quick status cards -->
+        <div class="lab-wall">
+          <div class="lab-card" id="wall-saved"><strong>Saved</strong><div class="value">₹0</div></div>
+          <div class="lab-card" id="wall-spent"><strong>Spent</strong><div class="value">₹0</div></div>
+          <div class="lab-card" id="wall-budget"><strong>Budget</strong><div class="value">—</div></div>
+          <div class="lab-card" id="wall-topcat"><strong>Top</strong><div class="value">—</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expense Tracker -->
+    <section id="tracker" class="section" data-aos="fade-up">
+      <h2>Expense Tracker</h2>
+      <div class="card">
+        <div class="form-row">
+          <input id="amount" type="number" placeholder="Amount (₹)" />
+          <input id="category" type="text" placeholder="Category (Food, Rent...)" />
+          <input id="date" type="date" />
+          <button id="addBtn" class="btn">Add</button>
+        </div>
+
+        <!-- Planner + budget -->
+        <div class="row">
+          <div class="summary">
+            <h3>Summary</h3>
+            <p id="total">Total: ₹0</p>
+            <p id="count">Entries: 0</p>
+
+            <div class="budget-row">
+              <input id="budget" type="number" placeholder="Set monthly budget (₹)" />
+              <button id="setBudget" class="btn ghost">Set</button>
+            </div>
+            <p id="budgetAlert" class="alert"></p>
+
+            <div class="planner compact">
+              <h4>Day-wise Pocket Planner</h4>
+              <div class="planner-row">
+                <input id="pocketAmount" type="number" placeholder="Pocket Money (₹)" />
+                <select id="pocketPeriod">
+                  <option value="7">Weekly (7 days)</option>
+                  <option value="30">Monthly (30 days)</option>
+                </select>
+                <button id="planBtn" class="btn ghost">Plan</button>
+              </div>
+              <div id="planOutput"></div>
+            </div>
+
+            <div style="margin-top:10px">
+              <button id="exportBtn" class="btn ghost">Export CSV</button>
+              <button id="clearBtn" class="btn ghost">Clear All</button>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <canvas id="expenseChart"></canvas>
+          </div>
+        </div>
+
+        <div class="list" id="expenseList"></div>
+      </div>
+    </section>
+
+    <!-- SIP Calculator -->
+    <section id="sip" class="section" data-aos="fade-right">
+      <h2>SIP Calculator</h2>
+      <div class="card split">
+        <div class="form-col">
+          <input id="sipAmount" type="number" placeholder="Monthly SIP (₹)" />
+          <input id="sipYears" type="number" placeholder="Duration (Years)" />
+          <input id="sipRate" type="number" placeholder="Expected Return Rate (%)" />
+          <button id="calcSip" class="btn">Calculate</button>
+          <p id="sipResult" class="result"></p>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="sipChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="section" data-aos="fade-up">
+      <h2>Dashboard</h2>
+      <div class="card dashboard-cards">
+        <div class="dash-card">
+          <h3>Saved</h3>
+          <p id="saved">₹0</p>
+        </div>
+        <div class="dash-card">
+          <h3>Spent</h3>
+          <p id="spent">₹0</p>
+        </div>
+        <div class="dash-card">
+          <h3>Budget</h3>
+          <p id="showBudget">—</p>
+        </div>
+        <div class="dash-card">
+          <h3>Top Category</h3>
+          <p id="topCat">—</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section" data-aos="fade-up">
+      <h2>About</h2>
+      <div class="card">
+        <p>FinSmart Lab is a student finance platform that helps you track your expenses, plan your budget, and grow your savings smartly.
+           It’s designed for young learners to build financial awareness with real-time visual tools.
+           All data is stored securely on your device for privacy.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer class="site-footer small">
+    <div class="footer-inner">
+      <div class="col">
+        <h4>FinSmart Lab</h4>
+        <p>Student finance demo — track, budget & plan SIPs.</p>
+      </div>
+      <div class="col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><br/>
+        <a href="#about">About</a><br/>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <!-- your contact details -->
+        <div>GitHub: <a href="https://github.com/Ankit-Kumar8651" target="_blank">Ankit-Kumar8651</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/ankit-saini-106585329" target="_blank">ankit-saini-106585329</a></div>
+        <div>Email: <a href="mailto:ankitkr8651005671@gmial.com">ankitkr8651005671@gmial.com</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot UI -->
+  <div id="chatbot-fab" title="Ask FinSmart Lab">💬</div>
+  <div id="chatbot-panel" aria-hidden="true">
+    <div class="chat-header">
+      <h4>FinSmart Bot</h4>
+      <button id="chat-close">✕</button>
+    </div>
+    <div id="chat-body"></div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Type 'help' or ask: '500 5 12%'" />
+      <button id="chat-send">Send</button>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>

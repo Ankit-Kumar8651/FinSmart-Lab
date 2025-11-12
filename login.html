@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FinSmart Lab — Login</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body class="login-body">
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- ✅ Navbar (same as main page) -->
+  <header class="nav minimal">
+    <div class="brand">
+      <h1>FinSmart <span>Lab</span></h1>
+      <p class="tag">Apna finance experiment</p>
+    </div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="index.html" class="active">Login</a>
+    </nav>
+  </header>
+
+  <!-- ✅ Login Form -->
+  <main class="login-main">
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <p>Login to continue to your Finance Lab</p>
+
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="you@example.com" />
+
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="password" />
+
+      <button id="loginBtn" class="btn">Login</button>
+
+
+    </div>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer class="site-footer small">
+    <div class="footer-inner">
+      <div class="col">
+        <h4>FinSmart Lab</h4>
+        <p>Student finance demo — track, budget & plan SIPs.</p>
+      </div>
+      <div class="col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><br/>
+        <a href="#about">About</a><br/>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <!-- your contact details -->
+        <div>GitHub: <a href="https://github.com/Ankit-Kumar8651" target="_blank">Ankit-Kumar8651</a></div>
+        <div>LinkedIn: <a href="https://www.linkedin.com/in/ankit-saini-106585329" target="_blank">ankit-saini-106585329</a></div>
+        <div>Email: <a href="mailto:ankitkr8651005671@gmial.com">ankitkr8651005671@gmial.com</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ✅ JavaScript (for login demo) -->
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', function(){
+      const email = document.getElementById('loginEmail').value.trim();
+      const pass = document.getElementById('loginPassword').value.trim();
+      if(!email || !pass) return alert('Enter both email and password.');
+      alert('Login successful (demo only) ✅');
+      window.location.href = 'index.html';
+    });
+  </script>
+
+  <!-- ✅ Particle Background JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60 },
+        "size": { "value": 3 },
+        "move": { "speed": 2 },
+        "line_linked": { "enable": true, "color": "#00ffd0" },
+        "color": { "value": "#00ffd0" }
+      }
+    });
+  </script>
+</body>
+</html>
